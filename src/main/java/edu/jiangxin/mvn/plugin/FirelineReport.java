@@ -8,7 +8,6 @@ import org.apache.maven.plugins.annotations.LifecyclePhase;
 import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
 import org.apache.maven.reporting.AbstractMavenReport;
-import org.apache.maven.reporting.MavenReportException;
 
 import java.io.File;
 import java.io.IOException;
@@ -28,24 +27,11 @@ public class FirelineReport extends AbstractMavenReport {
 	@Parameter(defaultValue = "${project.build.testSourceDirectory}", property = "fireline.testSourceDirectory", required = true)
 	private File testSourceDirectory;
 
-	/**
-	 * Link the violation line numbers to the source xref. Defaults to true and will link automatically if jxr plugin is
-	 * being used.
-	 */
-	@Parameter(defaultValue = "true", property = "linkXRef")
-	private boolean linkXRef;
-
-	@Parameter(defaultValue = "${project.build.directory}/site/xref")
-	private File xrefLocation;
-
-	@Parameter(defaultValue = "${project.build.directory}/site/xref-test")
-	private File xrefTestLocation;
-
-	@Parameter(defaultValue = "6", property = "fireline.threshold", required = true)
-	private int threshold;
+	@Parameter(defaultValue = "${project.build.directory}/site", property = "fireline.firelinePath", required = false)
+	private int firelinePath;
 
 	@Override
-	public void executeReport(Locale locale) throws MavenReportException {
+	public void executeReport(Locale locale) {
         try (ProcessLogOutputStream outStream = new ProcessLogOutputStream(mavenLog, ProcessLogOutputStream.LOG_LEVEL_INFO);
 			 ProcessLogOutputStream errStream = new ProcessLogOutputStream(mavenLog, ProcessLogOutputStream.LOG_LEVEL_ERROR)
         ) {

@@ -6,6 +6,11 @@
 
 ## How to Use
 
+
+```shell
+mvn install:install-file -DgroupId="io.github.jiangxincode" -DartifactId=”fireline” -Dversion="1.7.3" -Dpackaging=”jar” -Dfile="D:\Code\Maven\fireline-maven-plugin\lib\fireline_1.7.3.jar"
+```
+
 Add the below content to your `<project><reporting><plugins>` node of pom.xml. You can find latest `${fireline-maven-plugin-version}` from <https://search.maven.org/>
 
 ```xml
@@ -24,3 +29,10 @@ You can see the example from my another project:
 ## License
 
 * Apache License V2.0 http://www.apache.org/licenses/LICENSE-2.0
+
+## TODO
+
+* Download FireLine automatically
+* Make clean build warnings
+* Upload to maven center repository
+* Integrate into ApkToolBoxGUI
