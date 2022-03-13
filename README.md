@@ -1,32 +1,26 @@
-# Simian Maven Plugin
+# Fireline Maven Plugin
 
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.jiangxincode/simian-maven-plugin/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.jiangxincode/simian-maven-plugin)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.jiangxincode/fireline-maven-plugin/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.github.jiangxincode/fireline-maven-plugin)
 
-`simian-maven-plugin` is a maven plugin for `simian`. You can visit <http://www.harukizaemon.com/simian> for further information of `simian`.
-
-There is a `maven-simian-plugin`(http://maven.apache.org/archives/maven-1.x/plugins/simian), however it can be used in maven 1.x only, so I write the `simian-maven-plugin` for maven 2+.
+`fireline-maven-plugin` is a maven plugin for `FireLine`. You can visit <http://magic.360.cn/> for further information of `FireLine`.
 
 ## How to Use
 
-Add the below content to your `<project><reporting><plugins>` node of pom.xml. You can find latest `${simian-maven-plugin-version}` from <https://search.maven.org/>
+Add the below content to your `<project><reporting><plugins>` node of pom.xml. You can find latest `${fireline-maven-plugin-version}` from <https://search.maven.org/>
 
 ```xml
     <plugin>
-        <groupId>com.github.jiangxincode</groupId>
-        <artifactId>simian-maven-plugin</artifactId>
-        <version>${simian-maven-plugin-version}</version>
+        <groupId>io.github.jiangxincode</groupId>
+        <artifactId>fireline-maven-plugin</artifactId>
+        <version>${fireline-maven-plugin-version}</version>
     </plugin>
 ```
 
 Run `mvn clean site`
 
 You can see the example from my another project:
-<https://jiangxincode.github.io/ApkToolBoxGUI/simian-report.html>
+<https://jiangxincode.github.io/ApkToolBoxGUI/testReport.html>
 
 ## License
 
 * Apache License V2.0 http://www.apache.org/licenses/LICENSE-2.0
-
-*WARN*
-
-`simian-maven-plugin` is a completely free and open-source project but `simian` is not. So you must read the license of it: <http://www.harukizaemon.com/simian/license.pdf>
