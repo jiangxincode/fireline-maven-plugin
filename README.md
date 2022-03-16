@@ -33,6 +33,7 @@ You can see the example from my another project:
 ## TODO
 
 * Download FireLine automatically
+* Support config of original FireLine
 * Make clean build warnings
 * Upload to maven center repository
 * Integrate into ApkToolBoxGUI

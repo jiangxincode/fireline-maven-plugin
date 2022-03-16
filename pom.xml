@@ -74,6 +74,11 @@
             <artifactId>commons-io</artifactId>
             <version>2.6</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.5.3</version>
+        </dependency>
     </dependencies>
     <build>
         <pluginManagement>
@@ -135,7 +140,7 @@
                     <artifactId>fireline-maven-plugin</artifactId>
                     <version>0.0.1</version>
                     <configuration>
-                        <threshold>4</threshold>
+                        <downloadUrl>http://magic.360.cn/fireline_1.7.3.jar</downloadUrl>
                     </configuration>
                 </plugin>
             </plugins>
