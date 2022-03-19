@@ -4,10 +4,13 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>io.github.jiangxincode</groupId>
     <artifactId>fireline-maven-plugin</artifactId>
-    <version>0.0.2</version>
+    <version>0.0.3</version>
     <packaging>maven-plugin</packaging>
     <name>FireLine Maven Plugin</name>
     <url>https://github.com/jiangxincode/fireline-maven-plugin</url>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
     <parent>
         <groupId>org.sonatype.oss</groupId>
         <artifactId>oss-parent</artifactId>
@@ -35,14 +38,27 @@
     </developers>
     <dependencies>
         <dependency>
-            <groupId>org.apache.maven.plugin-tools</groupId>
-            <artifactId>maven-plugin-annotations</artifactId>
-            <version>3.6.4</version>
+            <groupId>org.apache.maven</groupId>
+            <artifactId>maven-core</artifactId>
+            <version>3.1.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.maven</groupId>
+            <artifactId>maven-artifact</artifactId>
+            <version>3.1.0</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.maven</groupId>
             <artifactId>maven-plugin-api</artifactId>
             <version>3.8.5</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.maven.plugin-tools</groupId>
+            <artifactId>maven-plugin-annotations</artifactId>
+            <version>3.6.4</version>
         </dependency>
         <dependency>
             <groupId>org.apache.maven.reporting</groupId>
@@ -53,11 +69,13 @@
             <groupId>org.apache.maven.reporting</groupId>
             <artifactId>maven-reporting-impl</artifactId>
             <version>3.1.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.maven.doxia</groupId>
-            <artifactId>doxia-sink-api</artifactId>
-            <version>2.0.0-M2</version>
+            <!-- why we need exclude some dependencies -->
+            <!-- see https://issues.apache.org/jira/projects/MPLUGIN/issues/MPLUGIN-385 for details -->
+            <exclusions>
+                <exclusion>
+                    <groupId>org.apache.maven</groupId>
+                    <artifactId>maven-core</artifactId>
+                </exclusion></exclusions>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
@@ -135,17 +153,9 @@
                     <version>2.9.0</version>
                 </plugin>
                 <plugin>
-                    <groupId>com.github.jiangxincode</groupId>
-                    <artifactId>simian-maven-plugin</artifactId>
-                    <version>0.0.6</version>
-                    <configuration>
-                        <threshold>3</threshold>
-                    </configuration>
-                </plugin>
-                <plugin>
                     <groupId>io.github.jiangxincode</groupId>
                     <artifactId>fireline-maven-plugin</artifactId>
-                    <version>0.0.2</version>
+                    <version>0.0.3</version>
                     <configuration>
                         <fireLineDownloadUrl>http://magic.360.cn/fireline_1.7.3.jar</fireLineDownloadUrl>
                     </configuration>
@@ -185,10 +195,6 @@
                         </reports>
                     </reportSet>
                 </reportSets>
-            </plugin>
-            <plugin>
-                <groupId>com.github.jiangxincode</groupId>
-                <artifactId>simian-maven-plugin</artifactId>
             </plugin>
             <plugin>
                 <groupId>io.github.jiangxincode</groupId>
