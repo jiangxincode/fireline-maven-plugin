@@ -110,13 +110,18 @@ public class FireLineReport extends AbstractMavenReport {
     }
 
     class MyDownloadProgress implements HttpClientUtils.DownLoadProgress {
+        private float lastProgress = 0f;
 
         @Override
         public void onProgress(float progress) {
-            NumberFormat numberFormat = NumberFormat.getPercentInstance();
-            numberFormat.setMaximumIntegerDigits(3);
-            numberFormat.setMaximumFractionDigits(2);
-            logger.info("download progress = " + numberFormat.format(progress));
+            float currentProgress = progress;
+            if (currentProgress - lastProgress > 0.1f) {
+                NumberFormat numberFormat = NumberFormat.getPercentInstance();
+                numberFormat.setMaximumIntegerDigits(3);
+                numberFormat.setMaximumFractionDigits(2);
+                logger.info("download progress = " + numberFormat.format(progress));
+                lastProgress = currentProgress;
+            }
         }
     }
 
